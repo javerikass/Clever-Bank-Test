@@ -1,0 +1,54 @@
+plugins {
+    id 'java'
+    id 'war'
+    id "io.freefair.aspectj.post-compile-weaving" version "6.4.1"
+}
+
+group 'by.clevertec'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.10.0'
+}
+
+sourceCompatibility = "15"
+targetCompatibility = "15"
+
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+    implementation 'org.postgresql:postgresql:42.5.4'
+
+    implementation 'com.itextpdf:itext7-core:7.2.3'
+
+    implementation 'org.aspectj:aspectjweaver:1.9.19'
+    implementation 'org.aspectj:aspectjrt:1.9.19'
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.2'
+
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.5.0'
+    testImplementation 'org.mockito:mockito-core:5.5.0'
+
+    implementation("org.junit.jupiter:junit-jupiter:${junitVersion}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
