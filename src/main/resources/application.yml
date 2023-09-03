@@ -1,0 +1,5 @@
+db.url=jdbc:postgresql://localhost:5432/postgres?characterEncoding=UTF8
+db.username=postgres
+db.password=pass
+db.driver=org.postgresql.Driver
+percent=1
